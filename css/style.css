@@ -129,8 +129,11 @@ a {
 .contact h1 {
 
 }
+.form-row {
+	padding: 0 50px;
+}
 #ajax-contact {
-	width: 480px;
+	width: 100%;
 	margin: 5rem auto 6rem;
 }
 #ajax-contact label {
@@ -142,7 +145,6 @@ a {
 #ajax-contact input, #ajax-contact textarea {
 	font-size: 1rem;
 	width: 100%;
-	box-sizing: border-box;
 }
 #ajax-contact input {
 	width: 100%;
