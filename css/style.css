@@ -4,6 +4,7 @@ body {
     background-color: #fff;
 	letter-spacing: 0.01em;	    
 	line-height: 1.5rem;
+	margin-top: 100px;
 	-webkit-font-smoothing: antialiased; 	
 }
 a.navbar-brand {
