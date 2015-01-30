@@ -1,0 +1,87 @@
+$(document).ready( function() {
+	//animate scrolling to anchors
+	$('a[href*=#]:not([href=#])').click(function() {
+		if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+			var target = $(this.hash);
+			target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+			if (target.length) {
+				$('html,body').animate({
+				  scrollTop: target.offset().top
+				}, 700);
+				return false;
+			}
+		}
+	});
+
+	// Get the form.
+	var form = $('#ajax-contact');
+
+	// Get the messages div.
+	var formMessages = $('#form-messages');
+
+	// Set up an event listener for the contact form.
+	$(form).submit(function(e) {
+		// Stop the browser from submitting the form.
+		e.preventDefault();
+
+		// Serialize the form data.
+		var formData = $(form).serialize();
+		console.log("formData: " + formData);
+		console.log("sending to: " + $(form).attr('action'));
+		// Submit the form using AJAX.
+		$.ajax({
+			type: 'POST',
+			url: $(form).attr('action'),
+			data: formData
+		})
+		.done(function(response) {
+			// Make sure that the formMessages div has the 'success' class.
+			$(formMessages).removeClass('error');
+			$(formMessages).addClass('success');
+
+			// Set the message text.
+			$(formMessages).text(response);
+			console.log("submit done, response: " + response);
+			// Clear the form.
+			$('#name').val('');
+			$('#email').val('');
+			$('#message').val('');
+		})
+		.fail(function(data) {
+			// Make sure that the formMessages div has the 'error' class.
+			$(formMessages).removeClass('success');
+			$(formMessages).addClass('error');
+
+			// Set the message text.
+			if (data.responseText !== '') {
+				$(formMessages).text(data.responseText);
+			} else {
+				$(formMessages).text('Oops! An error occured and your message could not be sent.');
+			}
+		});
+
+	});
+
+});
+
+
+function slideSwitch() {
+	var $active = $('#slideshow img.active');
+
+	if ( $active.length == 0 ) $active = $('#slideshow img:last');
+
+	var $next =  $active.next().length ? $active.next()
+		  : $('#slideshow img:first')
+
+	$active.addClass('last-active');
+
+	$next.css({opacity: 0.0})
+		  .addClass('active')
+		  .animate({opacity: 1.0}, 1000, function() {
+				$active.removeClass('active last-active');
+	});
+}
+
+$(function() {
+	setInterval("slideSwitch()", 7000 );
+});
