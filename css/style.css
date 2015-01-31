@@ -7,7 +7,7 @@ body {
 	margin-top: 100px;
 	-webkit-font-smoothing: antialiased; 	
 }
-a.navbar-brand {
+.navbar-brand {
 	background: url(../images/jp_logo.png) no-repeat;
 	height: 80px;
 	width: 214px;
@@ -238,6 +238,11 @@ a.anchor {
 	visibility: hidden;
 }
 
+@media (min-width: 768px){
+	.navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {
+	margin-left: 0;
+	}
+}
 /** 
  * iPad with portrait orientation.
  */
