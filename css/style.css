@@ -57,7 +57,7 @@ body {
 	margin-bottom: 60px;
 }
 p {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   line-height: 1.9rem;
   margin-bottom: 1.5rem;
 }
@@ -129,6 +129,7 @@ a, a:hover, a:visited, a:active, a:focus {
 	box-shadow: 4px 4px 3px #888;
   border: 1px solid #818181;
   max-width: 100%;
+  margin-bottom: 10px;
 }
 .featured h3 {
   margin: 0 0 2rem;
